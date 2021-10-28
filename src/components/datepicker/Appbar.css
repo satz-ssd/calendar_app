@@ -1,0 +1,87 @@
+#image{
+    margin-left: 35px;
+    width: 200 px;
+    height: 42px;
+}
+
+#droptech{
+    margin-left: 80px;
+    background-color: white;    
+}
+
+
+#droplevel{
+    margin-left: 10px;
+     background-color: white;
+}
+
+#dropdown-basic-button{
+    background-color: white;
+    color: rgb(173, 168, 168);
+    border-color: rgb(212, 210, 210);
+}
+
+
+.d-flex{
+    width: 450px;
+    margin-left: 12px;
+    height: 43px;   
+}
+
+.srchicon{
+    transform: translateX(-40px);
+     margin-top: 13px;
+      color: rgb(173, 168, 168);
+    font-size: 20px;
+}
+
+
+#fromdate{
+    margin-left: 10px;
+    height: 38px;
+    width: 130px;
+    border-radius: 5px;
+    color: rgb(173, 168, 168);
+    border: 1px solid rgb(212, 210, 210);
+    padding-left: 13px;
+}
+
+
+#todate{
+    margin-left: 11px;
+    height: 38px;
+    width: 105px;
+    border-radius: 5px;
+    color: rgb(173, 168, 168);
+    border: 1px solid rgb(212, 210, 210);
+     padding-left: 13px;
+
+}
+
+
+#button{
+    height: 37px;
+    border-radius: 5px;
+    width: 90px;
+    background-color:#faae2c;
+    color:white;
+    border: 1px solid #FAA81D; 
+    padding: auto;
+    margin-right: 30px;    
+}
+
+
+.icon1{
+    transform: translateY(-30px);
+    margin-left: 65px;
+}
+
+
+.icon2{
+    transform: translateY(-30px);
+    margin-left: px;
+}
+
+.cal_icon{
+
+}

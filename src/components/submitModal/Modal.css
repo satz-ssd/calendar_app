@@ -1,0 +1,31 @@
+#success{
+    text-align: center;
+    color: #05CC76;
+    font-size: 60px;
+}
+#text{
+    text-align: center;
+    color: rgb(55, 59, 55);
+    font-size:15px;
+}
+#button{
+    text-align: center;
+    color: #ffff;
+    background-color: #086288;
+    font-size:20px;
+    padding: 10px 22px 10px 22px;
+    border: none;
+    font-size: 14px;
+}
+#btn{
+    display: flex;
+    justify-content: center;
+}
+.modal__main{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 200px;
+    border-radius: 10px;
+    /* margin-bottom: auto; */
+}

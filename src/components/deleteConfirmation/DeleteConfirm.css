@@ -1,0 +1,20 @@
+.deleteExclamation{
+    color: #E5A700;
+    /* border: none; */
+    /* box-shadow: 0 0 8px hsla(44, 100%, 45%, 0.76); */
+}
+ i .deleteExclamation{
+    margin-left:50% ;
+}
+
+.alert{
+    text-align: center;
+}
+
+.delete__btns{
+    display: flex;
+    /* padding: 20px; */
+    justify-content: center;
+    /* margin: auto; */
+
+}

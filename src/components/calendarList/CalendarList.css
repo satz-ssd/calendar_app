@@ -1,0 +1,65 @@
+.calendarList_Sidebar {
+  display: flex;
+  /* justify-content:space-between; */
+}
+.calendarList_User{
+    margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.calendarList_Header{
+    border-top: 1px solid gray;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calendarList_HeaderSearch{
+    margin-right: 10px;
+}
+.calendarList_HeaderSearchInput{
+  border: none;
+  border-bottom: 1px solid grey;
+}
+.calendarList_HeaderSearch :focus{
+  outline: none;
+}
+.calendarList_Header_generateBtn{
+  background-color: #086288;
+}
+
+.calendarTable_ActionIcons {
+  display: flex;
+  justify-content: space-around;
+}
+.calendarList_thead{
+  background-color: #D6EFFA;
+}
+.calendarList_thead>th{
+  font-family: Helvetica, Regular;
+  font-size: 20px;
+}
+.calendarTable_SL{
+  font-family: Helvetica, Regular;
+  font-size: 16px;
+}
+.calendarTable_content{
+  font-family: Helvetica, Regular;
+  font-size: 20px;
+}
+
+.calendarList_User_avatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendarList_User_avatar_name{
+  margin-right: 10px;
+}
+/* .calendarList_right{
+  border:1px solid red;
+}
+.calendarList_left{
+  border:1px solid violet;
+} */
