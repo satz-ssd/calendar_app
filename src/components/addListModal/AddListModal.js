@@ -16,9 +16,11 @@ function AddListModal(props) {
         startDate: "",
         endDate: "",
         includes: "",
+        events:[]
     })
 
-    console.log("addListData", addListData);
+    // console.log("addListData", addListData);
+    
     const onshow = () => {
         props.setisShowAddList(true)
     }

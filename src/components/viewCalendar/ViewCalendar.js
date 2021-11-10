@@ -13,10 +13,13 @@ import "@fullcalendar/daygrid/main.css";
 import { Modal, Button } from "react-bootstrap";
 
 function ViewCalendar(props) {
+    let index= props.indexOfCalList
+      // console.log('index in caledar',index);
+
     return (
         <div>
-
-            <Modal show={() => props.setisShowViewCalendar(true)}
+            
+            <Modal size="lg" className="ViewModal__main" show={() => props.setisShowViewCalendar(true)}
                 onHide={() => props.setisShowViewCalendar(false)} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>View Calendar</Modal.Title>
@@ -43,21 +46,12 @@ function ViewCalendar(props) {
                         // eventClick={event => {
                         //   console.log(event.event._def.publicId);
                         // }}
-                        events={props.dataFromCalendar}
+                        events={props.listData[index].events}
                         // select={this.handleSelectedDates} 
                         eventLimit={3}
                     />
                 </Modal.Body>
-                {/* <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer> */}
             </Modal>
-
         </div>
     )
 }

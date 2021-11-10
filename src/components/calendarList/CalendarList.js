@@ -10,14 +10,18 @@ import { Avatar, IconButton } from '@material-ui/core';
 import ViewCalendar from './../viewCalendar/ViewCalendar';
 
 function CalendarList() {
+    //index of calendar
+    const [indexOfCalList, setindexOfCalList] = useState()
+
+    // console.log("indexOfCalList", indexOfCalList);
 
     //calendar list data (mainPAGE)
     const [listData, setlistData] = useState([]);
 
-    // console.log("listData", listData);
+    console.log("listData", listData);
 
     //getting data from calendar component
-    const [dataFromCalendar, setdataFromCalendar] = useState()
+    const [dataFromCalendar, setdataFromCalendar] = useState([])
 
     const [isShowAddList, setisShowAddList] = useState(false)
     const [isShowCalendar, setisShowCalendar] = useState(false)
@@ -30,11 +34,12 @@ function CalendarList() {
 
     // getting data from calendar component
     const eventFromCalendar = (data) => {
-        setdataFromCalendar(data)
+        console.log(data);
+// 
+        const listDataCalCopy = JSON.parse(JSON.stringify(listData))
+        listDataCalCopy[indexOfCalList].events.push(data)
+        setlistData(listDataCalCopy)
     }
-
-    console.log("dataFromCalendar:parent", dataFromCalendar);
-
 
     //send del index to modal
     const sendDelIndex = (index) => {
@@ -59,7 +64,11 @@ function CalendarList() {
             listDataCopy
         )
     }
-    // console.log("listData",listData);
+
+    // index of calendar list 
+    const indexOfCalendarList = (index) => {
+        setindexOfCalList(index)
+    }
 
     return (
         <div>
@@ -87,7 +96,7 @@ function CalendarList() {
 
                         <Row className="calendarList_User">
                             <Col md={10}></Col>
-                            
+
                             <Col md={2}>
                                 <div className="calendarList_User_avatar">
                                     <h6 className="calendarList_User_avatar_name">Satz</h6>
@@ -134,12 +143,12 @@ function CalendarList() {
                                                             <div className="calendarTable_ActionIcons">
                                                                 <div>
                                                                     <i className="far fa-eye"
-                                                                        onClick={() => { setisShowCalendar(false); setisShowViewCalendar(true) }}></i>
+                                                                        onClick={() => { setisShowCalendar(false); setisShowViewCalendar(true);indexOfCalendarList(index) }}></i>
                                                                 </div>
 
                                                                 <div>
                                                                     <i className="fas fa-pencil-alt"
-                                                                        onClick={() => { setisShowViewCalendar(false); setisShowCalendar(true) }}></i>
+                                                                        onClick={() => { setisShowViewCalendar(false); setisShowCalendar(true); indexOfCalendarList(index) }}></i>
                                                                 </div>
 
                                                                 <div>
@@ -163,13 +172,13 @@ function CalendarList() {
                 </Row>
             </Container>
 
+            {/* adding details to calendar list */}
+
             {isShowAddList && <AddListModal setisShowAddList={setisShowAddList} setlistData={setlistData}
                 getDataFromAddListModal={getDataFromAddListModal}
                 setisShowSubmitModal={setisShowSubmitModal} />}
 
-            {isShowCalendar && <CalendarModal setisShowCalendar={setisShowCalendar}
-                eventFromCalendar={eventFromCalendar} />}
-
+            {/* delete modal  */}
             {isShowDelete && (
                 <DeleteConfirmation
                     setisShowDelete={setisShowDelete}
@@ -178,10 +187,21 @@ function CalendarList() {
                 />
             )}
 
+            {/* submit modal */}
             {isShowSubmitModal && (
                 <SubmitModal setisShowSubmitModal={setisShowSubmitModal} />
             )}
-            {isShowViewCalendar && <ViewCalendar dataFromCalendar={dataFromCalendar} setisShowViewCalendar={setisShowViewCalendar} />}
+
+            {/* edit calendar modal */}
+            {isShowCalendar && <CalendarModal setisShowCalendar={setisShowCalendar}
+                eventFromCalendar={eventFromCalendar}  indexOfCalList={indexOfCalList}
+                listData={listData} />}
+
+            {/* view calendar modal */}
+            {isShowViewCalendar && <ViewCalendar dataFromCalendar={dataFromCalendar}
+                setisShowViewCalendar={setisShowViewCalendar} listData={listData} 
+                indexOfCalList={indexOfCalList}
+                />}
         </div>
     )
 }

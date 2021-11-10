@@ -12,43 +12,48 @@ import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/daygrid/main.css";
 import { Modal, Button } from "react-bootstrap";
 
-export class CalendarModal extends React.Component {
+export class CalendarModal extends React.PureComponent {
   calendarComponentRef = React.createRef();
-  state = {
-    events: [
-      { id: 999, title: "event 1", date: "2021-10-28" },
-      {
-        title: "event 2",
-        start: "2021-10-10",
-        end: "2021-10-11",
-        allDay: true,
-        HostName: "William"
-      },
-      {
-        title: "event 3",
-        start: "2021-10-15",
-        end: "2021-10-15",
-        allDay: true
-      },
-      {
-        title: "event 4",
-        start: "2021-10-11",
-        end: "2021-10-11",
-        allDay: true
-      },
-      {
-        title: "event 5",
-        start: "2021-10-20",
-        end: "2021-10-20",
-        allDay: true
-      },
-      {
-        title: "event 6",
-        start: "2021-10-22",
-        end: "2021-10-22",
-        allDay: true
-      }
-    ]
+  constructor(props) {
+    super(props)
+    this.state = {
+      events: [
+        // { id: 999, title: "event 1", date: "2021-11-28" },
+        // {
+        //   title: "event 2",
+        //   start: "2021-11-10",
+        //   end: "2021-11-11",
+        //   allDay: true,
+        //   HostName: "William"
+        // },
+        // {
+        //   title: "event 3",
+        //   start: "2021-11-15",
+        //   end: "2021-11-15",
+        //   allDay: true
+        // },
+        // {
+        //   title: "event 4",
+        //   start: "2021-11-11",
+        //   end: "2021-11-11",
+        //   allDay: true
+        // },
+        // {
+        //   title: "event 5",
+        //   start: "2021-11-20",
+        //   end: "2021-11-20",
+        //   allDay: true
+        // },
+        // {
+        //   title: "event 6",
+        //   start: "2021-11-22",
+        //   end: "2021-11-22",
+        //   allDay: true
+        // }
+      ]
+    };
+
+    console.log("event", this.state.events);
   };
 
   handleDateClick = arg => {
@@ -63,24 +68,28 @@ export class CalendarModal extends React.Component {
       const newEvent = {
         title,
         start: info.startStr,
-        end: info.endStr
+        end: info.endStr,
+        allDay: true
       };
+      //sending cal events to parent
+      this.props.eventFromCalendar(newEvent)
+
       const data = [...this.state.events, newEvent];
       this.setState({ events: data });
-
-      //sending event to
-      this.props.eventFromCalendar(data)
 
       console.log("here", data);
     } else {
       console.log("nothing");
     }
   };
-
+  
   render() {
+    // getting index of clicked list 
+    let index= this.props.indexOfCalList
+
     return (
-      <Modal show={() => this.props.setisShowCalendar(true)}
-       onHide={() => this.props.setisShowCalendar(false)}  animation={false}>
+      <Modal size="lg" show={() => this.props.setisShowCalendar(true)}
+        onHide={() => this.props.setisShowCalendar(false)} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Calendar Generation</Modal.Title>
         </Modal.Header>
@@ -106,20 +115,12 @@ export class CalendarModal extends React.Component {
             eventClick={event => {
               console.log(event.event._def.publicId);
             }}
-            events={this.state.events}
+            events={this.props.listData[index].events}
+            // events={this.state.events}
             select={this.handleSelectedDates}
             eventLimit={3}
           />
         </Modal.Body>
-
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
 
     );
@@ -127,31 +128,3 @@ export class CalendarModal extends React.Component {
 }
 
 export default CalendarModal
-
-
-// {/* <FullCalendar
-//               schedulerLicenseKey="GPL-My-Project-Is-Open-Source"
-//               ref={this.calendarComponentRef}
-//               defaultView="dayGridMonth"
-//               dateClick={this.handleDateClick}
-//               displayEventTime={true}
-//               header={{
-//                 left: "prev,next today",
-//                 center: "title",
-//                 right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
-//               }}
-//               selectable={true}
-//               plugins={[
-//                 dayGridPlugin,
-//                 interactionPlugin,
-//                 timeGridPlugin,
-//                 resourceTimeGridPlugin
-//               ]}
-//               eventClick={event => {
-//                 console.log(event.event._def.publicId);
-//               }}
-//               events={this.state.events}
-//               select={this.handleSelectedDates}
-//               eventLimit={3}
-//             /> */}
-
